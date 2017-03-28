@@ -5,6 +5,7 @@ import {NavController,AlertController, MenuController, ToastController} from 'io
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import {CreateUserPage} from '../create-user/create-user';
 import {TabsPage} from '../tabs/tabs';
+import {TeamsPage} from '../teams/teams';
 
 /*
  Generated class for the Intro page.
@@ -35,9 +36,10 @@ export class IntroPage {
       (success) => {
         this.tipo = this.firebase.database.object('/usuarios/' + success.uid + '/tipo', {preserveSnapshot: true});
         localStorage.setItem("user_uid", success.uid);
+        localStorage.setItem("user_email", form.value.email);
         this.tipo.subscribe(snapshot => {
           localStorage.setItem("user_type", snapshot.val());
-          this.navCtrl.setRoot(TabsPage);
+          this.navCtrl.setRoot(TeamsPage);
         });
       }
     ).catch(
@@ -105,12 +107,14 @@ export class IntroPage {
     this.firebase.auth.createUser({
       email: email,
       password: password
-    }).then((sucess)=>{
-      this.firebase.database.object('/users/' + sucess.uid).set({
-        name: name
+    }).then((success)=>{
+      this.firebase.database.object('/users/' + success.uid).set({
+        name: name,
+        email: email
       }).then(()=>{
         this.writeToast("Cuenta creada correctamente");
       });
+      this.firebase.database.object('/emails/'+success.uid).set(email);
     });
   }
 
