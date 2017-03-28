@@ -1,12 +1,13 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { DonePage } from '../pages/done/done';
+import { InProcessPage } from '../pages/in-process/in-process';
+import { PendingPage } from '../pages/pending/pending';
 import { TabsPage } from '../pages/tabs/tabs';
 import {IntroPage} from '../pages/intro/intro';
 import {Accounts} from '../providers/accounts';
+import {AddTaskPage} from '../pages/add-task/add-task';
 
 import { AngularFireModule,
   AuthMethods,
@@ -29,11 +30,12 @@ export const firebaseAuthConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    DonePage,
+    PendingPage,
+    InProcessPage,
     TabsPage,
-    IntroPage
+    IntroPage,
+    AddTaskPage
   ],
   imports: [
     IonicModule.forRoot(MyApp,Accounts),
@@ -42,11 +44,12 @@ export const firebaseAuthConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    DonePage,
+    PendingPage,
+    InProcessPage,
     TabsPage,
-    IntroPage
+    IntroPage,
+    AddTaskPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
