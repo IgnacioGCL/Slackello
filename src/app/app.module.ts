@@ -6,6 +6,24 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyAE-Uwac89BS0wsECCE7fnDC1t0LY0LZIQ",
+  authDomain: "slackello-14e3e.firebaseapp.com",
+  databaseURL: "https://slackello-14e3e.firebaseio.com",
+  storageBucket: "slackello-14e3e.appspot.com",
+  messagingSenderId: "203288553819"
+}
+
+import { AngularFireModule,
+  AuthMethods,
+  AuthProviders
+} from 'angularfire2';
+
+export const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -15,7 +33,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
