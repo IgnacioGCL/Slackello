@@ -2,8 +2,6 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import {AngularFire} from 'angularfire2';
-import _ from 'lodash';
-
 
 @Component({
   selector: 'page-teams',
@@ -58,22 +56,11 @@ export class TeamsPage {
   }
 
   addTeamToFirebase(information) {
-    var clave: String;
     console.log();
     this.firebase.database.list('/teams/').push({}).then((success) => {
       information['nombreUsuario0'] = localStorage.getItem("user_email");
       this.firebase.database.object('/teams/' + success.key).set(information);
     });
-
-
-
-
-    /*this.firebase.database.list('/teams/').push({
-     proyecto: information.nombreProyecto,
-     usuario1: information.nombreUsuario1
-     }).then((success) => {
-     this.firebase.database.object('/users/'+localStorage.getItem("user_uid")+'/teams/'+success.key).set(information.nombreProyecto)
-     });*/
   }
 
 }
