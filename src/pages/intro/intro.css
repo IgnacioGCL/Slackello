@@ -1,0 +1,15 @@
+page-intro .home {
+  background: #d2ff52;
+  background: -moz-linear-gradient(top, #d2ff52 0%, #adf249 57%, #91e842 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #d2ff52), color-stop(57%, #adf249), color-stop(100%, #91e842));
+  background: -webkit-linear-gradient(top, #d2ff52 0%, #adf249 57%, #91e842 100%);
+  background: -o-linear-gradient(top, #d2ff52 0%, #adf249 57%, #91e842 100%);
+  background: -ms-linear-gradient(top, #d2ff52 0%, #adf249 57%, #91e842 100%);
+  background: linear-gradient(to bottom, #d2ff52 0%, #adf249 57%, #91e842 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 ); }
+page-intro #login-options span {
+  width: 100%;
+  text-align: center;
+  float: left; }
+
+/*# sourceMappingURL=intro.css.map */

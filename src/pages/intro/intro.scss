@@ -1,4 +1,4 @@
-page-home {
+page-intro {
   .home{
     background: rgba(210,255,82,1);
     background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(173,242,73,1) 57%, rgba(145,232,66,1) 100%);
@@ -8,5 +8,12 @@ page-home {
     background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(173,242,73,1) 57%, rgba(145,232,66,1) 100%);
     background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(173,242,73,1) 57%, rgba(145,232,66,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+  }
+  #login-options{
+    span{
+      width: 100%;
+      text-align: center;
+      float:left;
+    }
   }
 }

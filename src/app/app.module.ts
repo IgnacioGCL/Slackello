@@ -5,7 +5,11 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {IntroPage} from '../pages/intro/intro';
+import {AngularFireModule,AuthMethods,AuthProviders} from 'angularfire2';
+import {Accounts} from '../providers/accounts';
 
+<<<<<<< HEAD
 export const firebaseConfig = {
   apiKey: "AIzaSyAE-Uwac89BS0wsECCE7fnDC1t0LY0LZIQ",
   authDomain: "slackello-14e3e.firebaseapp.com",
@@ -19,9 +23,12 @@ import { AngularFireModule,
   AuthProviders
 } from 'angularfire2';
 
-export const firebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
+export const firebaseConfig={
+  apiKey: "AIzaSyDwJUVbnD0SNjOqyUT-6ueGuMG1wlQF8V4",
+  authDomain: "daw-ionic.firebaseapp.com",
+  databaseURL: "https://daw-ionic.firebaseio.com",
+  storageBucket: "daw-ionic.appspot.com",
+  messagingSenderId: "694391426507"
 }
 
 @NgModule({
@@ -30,11 +37,12 @@ export const firebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    IonicModule.forRoot(MyApp,Accounts),
+    AngularFireModule.initializeApp(firebaseConfig,firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +50,8 @@ export const firebaseAuthConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
