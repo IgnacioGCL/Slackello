@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,qBAAK;EACH,gBAAgB,EAAE,OAAO",
+"sources": ["in-process.scss"],
+"names": [],
+"file": "in-process.css"
+}
