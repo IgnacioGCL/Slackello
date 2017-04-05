@@ -19,9 +19,11 @@ export class AddTaskPage {
   states:any;
   keyTeam:any;
   items_teams:any;
+  nameTeam:any;
   task={};
   constructor(public af:AngularFire,public navCtrl: NavController, public navParams: NavParams) {
     this.states=["Pendiente","En Proceso","Hecho"];
+    this.nameTeam=navParams.get('nameTeam');
     this.keyTeam=navParams.get('keyTeam');
     //Emails  integrantes del equipo
     this.items_teams=af.database.list('/teams/'+this.keyTeam);
@@ -50,7 +52,10 @@ export class AddTaskPage {
     console.log('ionViewDidLoad AddTaskPage');
   }
   addTask(){
+    this.af.database.list('/teams/'+this.keyTeam+'/tasks').push(this.task);
     console.log(this.task);
-    this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage,{
+      nameTeam:this.nameTeam
+    });
   }
 }
