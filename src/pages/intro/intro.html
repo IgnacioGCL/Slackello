@@ -10,28 +10,23 @@
 
 <ion-content padding class="home">
   <div class="my-title">
-    <h1 >Slackello
-      <div style="height: 10px;"></div>
-
+    <h1>Slackello
     </h1>
 
   </div>
   <div style="height: 30px;"></div>
   <form #form="ngForm" (ngSubmit)="submitForm(form)">
     <ion-list>
-      <ion-item style="padding-left: 0" class="inputs">
-        <ion-label >Username</ion-label>
-        <ion-input type="email" name="email" ngModel required></ion-input>
+      <ion-item style="padding-left: 0; background-color: transparent !important; color: white;" class="inputs">
+        <ion-input placeholder="Correo" type="email" name="email" ngModel required></ion-input>
       </ion-item>
 
-      <ion-item style="padding-left: 0" class="inputs">
-        <ion-label >Password</ion-label>
-        <ion-input type="password" name="password" ngModel required></ion-input>
+      <ion-item style="padding-left: 0; background-color: transparent !important; color: white;" class="inputs">
+        <ion-input placeholder="Contraseña" type="password" name="password" ngModel required></ion-input>
       </ion-item>
-
     </ion-list>
 
-    <button style="margin-top: 30px;" type="submit" ion-button block [disabled]="!form.value.email || !form.value.password">{{saludo}}</button>
+    <button class="form-button" color="white" type="submit" ion-button block [disabled]="!form.value.email || !form.value.password">{{saludo}}</button>
   </form>
   <div id="login-options">
     <span>¿Has olvidado tu contraseña?</span>

@@ -1,23 +1,25 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, ToastController} from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
-import {AngularFire,FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {TabsPage} from '../tabs/tabs';
+import _ from 'lodash';
+
 @Component({
   selector: 'page-teams',
   templateUrl: 'teams.html'
 })
+
 export class TeamsPage {
   count: number = 1;
-  user_uid:any;
-  user_teams:FirebaseListObservable<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: AngularFire, private firebase1: AngularFire, public alertCtrl: AlertController) {
-    this.user_uid=localStorage.getItem("user_uid");
-    console.log(this.user_uid);
-    this.user_teams=this.firebase.database.list('/users/'+this.user_uid+'/teams');
-    /*this.user_teams.forEach(teams=>{
-      console.log(teams);
-    })*/
+  myUid: String = localStorage.getItem("user_uid");
+  teams: FirebaseListObservable<any>;
+  teamsLength: number;
+  constructor(private firebase: AngularFire, public alertCtrl: AlertController, public toast: ToastController, public navCtrl: NavController) {
+    this.teams = this.firebase.database.list('/users/'+this.myUid+'/teams/');
+    this.teams.subscribe(teams => {
+      this.teamsLength = teams.length;
+    });
   }
 
   createTeam() {
@@ -53,7 +55,7 @@ export class TeamsPage {
           text: 'Crear proyecto',
           handler: information => {
             this.count = 1;
-            this.addTeamToFirebase(information);
+            this.verifyInformation(information);
           }
         }
       ]
@@ -61,26 +63,68 @@ export class TeamsPage {
     popup.present();
   }
 
+  verifyInformation(emails) {
+    var onlyEmails: any[] = [];
+    var found: boolean;
+    var index: number = 0;
+    const firebaseEmails = this.firebase.database.list('/emails/', {preserveSnapshot: true});
+    firebaseEmails.subscribe(emailsTree => {
+      emailsTree.forEach(function (email) {
+        onlyEmails[index] = email.val();
+        index++;
+      });
+      for (let email in emails) {
+        if (email != "nombreProyecto") {
+          found = _.includes(onlyEmails, emails[email]);
+          console.log(found);
+          if (!found) break;
+        }
+      }
+      found ? this.addTeamToFirebase(emails) : this.writeToast("Error: Algún correo de usuario no existe");
+      return;
+    });
+  }
+
   addTeamToFirebase(information) {
-    console.log();
     this.firebase.database.list('/teams/').push({}).then((success) => {
       information['nombreUsuario0'] = localStorage.getItem("user_email");
       this.firebase.database.object('/teams/' + success.key).set(information);
+      this.addTeamToUsers(information, success.key);
     });
 
   }
-  loadTeamsFirebase(){
 
-
+  addTeamToUsers(information, proyectKey) {
+    var proyectName: String;
+    this.firebase.database.list('/emails/', {preserveSnapshot: true}).subscribe((emails) => {
+      for (let info in information) {
+        if (info != "nombreProyecto") {
+          emails.forEach(email => {
+            if (email.val() == information[info]) {
+              this.firebase.database.object('/users/' + email.key + '/teams/' + proyectKey).set(proyectName);
+            }
+          })
+        } else {
+          proyectName = information[info];
+        }
+      }
+    });
+    this.writeToast("Equipo creado");
   }
-  goToTasks(teamName,teamKey){
+  goTeam(teamName,teamKey){
     this.navCtrl.push(TabsPage,{
       nameTeam:teamName,
       keyTeam:teamKey
     });
   }
-  getTeamName(){
-    return this.user_teams;
+
+  writeToast(message) {
+    let toast = this.toast.create({
+      message: message,
+      duration: 3000
+    });
+    toast.present();
   }
+
 
 }
