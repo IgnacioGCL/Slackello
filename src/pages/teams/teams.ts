@@ -67,6 +67,7 @@ export class TeamsPage {
       information['nombreUsuario0'] = localStorage.getItem("user_email");
       this.firebase.database.object('/teams/' + success.key).set(information);
     });
+
   }
   loadTeamsFirebase(){
 
