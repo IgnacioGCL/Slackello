@@ -38,7 +38,6 @@ export class IntroPage {
         localStorage.setItem("user_uid", success.uid);
         localStorage.setItem("user_email", form.value.email);
         this.tipo.subscribe(snapshot => {
-          localStorage.setItem("user_type", snapshot.val());
           this.navCtrl.setRoot(TeamsPage);
         });
       }
