@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,kBAAK;EACH,gBAAgB,EAAE,OAAO;AAE3B,uBAAU;EACR,UAAU,EAAE,MAAM",
+"sources": ["pending.scss"],
+"names": [],
+"file": "pending.css"
+}
