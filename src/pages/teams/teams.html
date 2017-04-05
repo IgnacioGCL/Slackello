@@ -13,13 +13,13 @@
 </ion-header>
 
 <ion-content padding class="color">
-  <ion-list>
+  <ion-list *ngFor="let team of user_teams|async">
     <ion-card>
-        <ion-item>
+        <ion-item (click)="goToTasks(team.$value,team.$key);">
           <ion-avatar item-left>
             <img src="http://ionicframework.com/dist/preview-app/www/assets/img/marty-avatar.png">
           </ion-avatar>
-          <h2>Proyecto blabla</h2>
+          <h2>{{team.$value}}</h2>
         </ion-item>
     </ion-card>
   </ion-list>

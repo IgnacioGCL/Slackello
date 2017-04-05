@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {AddTaskPage} from '../add-task/add-task';
+
 /*
   Generated class for the Done page.
 
@@ -16,9 +16,7 @@ export class DonePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.project="Proyecto 1";
   }
-  addNewTask(){
-    this.navCtrl.push(AddTaskPage);
-  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonePage');
   }

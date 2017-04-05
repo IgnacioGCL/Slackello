@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {AddTaskPage} from '../add-task/add-task';
+
 /*
   Generated class for the InProcess page.
 
@@ -12,13 +12,12 @@ import {AddTaskPage} from '../add-task/add-task';
   templateUrl: 'in-process.html'
 })
 export class InProcessPage {
-  project:String
+  team:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.project="Proyecto 1"
+    this.team=navParams.get('nameTeam');
+    console.log(this.team);
   }
-  addNewTask(){
-    this.navCtrl.push(AddTaskPage);
-  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad InProcessPage');
   }

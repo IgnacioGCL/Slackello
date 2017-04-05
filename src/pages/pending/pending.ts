@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {AddTaskPage} from '../add-task/add-task';
 import {AngularFire,FirebaseListObservable} from 'angularfire2';
 /*
   Generated class for the Pending page.
@@ -13,16 +12,15 @@ import {AngularFire,FirebaseListObservable} from 'angularfire2';
   templateUrl: 'pending.html'
 })
 export class PendingPage {
-  project:String;
+  nameTeam:String;
   tasks:FirebaseListObservable<any>;
   constructor(public navCtrl: NavController,public af:AngularFire, public navParams: NavParams) {
-    this.project="Proyecto 1";
+    this.nameTeam=navParams.get('nameTeam');
     this.tasks=af.database.list('/teams');
+    console.log(this.nameTeam);
     //this.tasks=af.database.list('/teams/'+team_id);
   }
-  addNewTask(){
-    this.navCtrl.push(AddTaskPage);
-  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PendingPage');
   }

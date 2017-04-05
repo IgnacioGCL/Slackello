@@ -1,3 +1,18 @@
+
+
+<ion-header>
+  <ion-navbar color="dark" outline>
+    <ion-title>{{nameTeam}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addNewTask();">
+        <ion-icon name="add" ></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>Tareas pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Pendiente" tabIcon="add"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="En progreso" tabIcon="add"></ion-tab>
