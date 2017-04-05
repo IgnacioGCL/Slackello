@@ -14,15 +14,19 @@
 
 <ion-content padding class="color">
   <ion-list>
-    <ion-card>
-        <ion-item>
-          <ion-avatar item-left>
-            <img src="http://ionicframework.com/dist/preview-app/www/assets/img/marty-avatar.png">
-          </ion-avatar>
-          <h2>Proyecto blabla</h2>
-        </ion-item>
+    <ion-card *ngFor="let team of teams | async">
+      <ion-item (click)="goTeam(team.$key)">
+        <ion-avatar item-left>
+          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/marty-avatar.png">
+        </ion-avatar>
+        <h2>{{ team.$value }}</h2>
+      </ion-item>
     </ion-card>
   </ion-list>
+
+  <div class="no-teams-wrapper">
+    <h2 *ngIf="teamsLength < 1" class="no-teams">No tiene equipos todavía</h2>
+  </div>
 
   <button class="button button-float" ion-button icon-right icon-only (click)="createTeam()">
     <ion-icon class="icon-size" ios="ios-add" md="md-add"></ion-icon>
