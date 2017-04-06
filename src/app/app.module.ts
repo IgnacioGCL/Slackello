@@ -15,6 +15,8 @@ import { AngularFireModule,
   AuthProviders
 } from 'angularfire2';
 import {TeamsPage} from "../pages/teams/teams";
+import {OneSignal} from '@ionic-native/onesignal';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAE-Uwac89BS0wsECCE7fnDC1t0LY0LZIQ",
@@ -59,6 +61,6 @@ export const firebaseAuthConfig = {
     TaskViewPage,
     CommentsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, OneSignal]
 })
 export class AppModule {}
