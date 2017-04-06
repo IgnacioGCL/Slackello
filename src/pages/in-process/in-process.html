@@ -17,8 +17,18 @@
 
 <ion-content class="home" padding>
   <ion-list>
-    <ion-item *ngFor="let inprocess_task of inprocess_tasks " (click)="viewTask(inprocess_task);">
-      <ion-card-content>{{inprocess_task.name}}</ion-card-content>
-    </ion-item>
+
+    <ion-card *ngFor="let inprocess_task of inprocess_tasks " (click)="viewTask(inprocess_task);">
+      <ion-card-content id="card" >
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8=""><h3>{{inprocess_task.name}}</h3></ion-col>
+            <ion-col col-4><div><ion-icon name="person"><span>{{inprocess_task.responsable}}</span></ion-icon></div></ion-col>
+
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
   </ion-list>
 </ion-content>

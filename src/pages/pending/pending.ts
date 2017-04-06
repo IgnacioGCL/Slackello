@@ -43,7 +43,8 @@ export class PendingPage {
 
   viewTask(task){
     this.navCtrl.push(TaskViewPage,{
-      taskParams:task
+      taskParams:task,
+      keyTeam:this.keyTeam
     });
   }
 }

@@ -9,24 +9,28 @@
 
   </ion-navbar>
   <ion-toolbar>
-    <ion-title>{{task.name}}</ion-title>
+    <ion-title style="text-align: center;">{{task.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="color">
   <ion-list>
-
-    <ion-item>
-      <ion-label stacked>Descripción</ion-label>
-      <ion-label >{{task.description}}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Responsable</ion-label>
-      <ion-label >{{task.responsable}}</ion-label>
-    </ion-item>
+    <ion-card>
+      <ion-card-header ><ion-card-title><strong>Descripción</strong></ion-card-title></ion-card-header>
+      <ion-card-content >{{task.description}}</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header ><ion-card-title><strong>Responsable</strong></ion-card-title></ion-card-header>
+      <ion-card-content >{{task.responsable}}</ion-card-content>
+    </ion-card>
   </ion-list>
-  <ion-item-divider>Comentarios</ion-item-divider>
-  <ion-textarea placeholder="Escribe un comentario"></ion-textarea>
+  <ion-buttons style="text-align: center;">
 
-
+    <button ion-button color="dark" outline>Pasar a pendiente</button>
+    <button ion-button color="dark" outline>Pasar a en proceso</button>
+    <button ion-button color="dark" outline>Pasar a finalizadas</button>
+  </ion-buttons>
+  <ion-buttons style="text-align: center;">
+    <button   ion-button color="dark" (click)="goToComments();">Comentarios</button>
+  </ion-buttons>
 </ion-content>
