@@ -8,7 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {IntroPage} from '../pages/intro/intro';
 import {Accounts} from '../providers/accounts';
 import {AddTaskPage} from '../pages/add-task/add-task';
-
+import {TaskViewPage} from '../pages/task-view/task-view';
 import { AngularFireModule,
   AuthMethods,
   AuthProviders
@@ -37,7 +37,8 @@ export const firebaseAuthConfig = {
     TabsPage,
     IntroPage,
     AddTaskPage,
-    TeamsPage
+    TeamsPage,
+    TaskViewPage
   ],
   imports: [
     IonicModule.forRoot(MyApp,Accounts),
@@ -52,7 +53,8 @@ export const firebaseAuthConfig = {
     TabsPage,
     IntroPage,
     AddTaskPage,
-    TeamsPage
+    TeamsPage,
+    TaskViewPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

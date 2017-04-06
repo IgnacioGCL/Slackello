@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AngularFire,FirebaseListObservable} from 'angularfire2';
+import {TaskViewPage} from '../task-view/task-view';
 /*
   Generated class for the Pending page.
 
@@ -39,8 +40,11 @@ export class PendingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PendingPage');
   }
-  showPendingTasks(){
 
+  viewTask(task){
+    this.navCtrl.push(TaskViewPage,{
+      taskParams:task
+    });
   }
-
 }
+

@@ -17,7 +17,7 @@
 
 <ion-content class="home" padding>
   <ion-list>
-    <ion-item *ngFor="let inprocess_task of inprocess_tasks ">
+    <ion-item *ngFor="let inprocess_task of inprocess_tasks " (click)="viewTask(inprocess_task);">
       <ion-card-content>{{inprocess_task.name}}</ion-card-content>
     </ion-item>
   </ion-list>

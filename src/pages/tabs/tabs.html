@@ -9,12 +9,10 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar>
-    <ion-title>Tareas pendientes</ion-title>
-  </ion-toolbar>
+
 </ion-header>
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Pendiente" [rootParams]="params" tabIcon="add"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Pendiente" [rootParams]="params" tabIcon="add" tabsHideOnSubPages="true"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="En progreso" [rootParams]="params" tabIcon="add"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Finzalizadas" [rootParams]="params" tabIcon="add"></ion-tab>
 </ion-tabs>

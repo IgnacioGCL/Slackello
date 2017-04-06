@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AngularFire,FirebaseListObservable} from 'angularfire2';
+import {TaskViewPage} from '../task-view/task-view';
 /*
   Generated class for the Done page.
 
@@ -33,5 +34,9 @@ export class DonePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DonePage');
   }
-
+  viewTask(task){
+    this.navCtrl.push(TaskViewPage,{
+      taskParams:task
+    });
+  }
 }

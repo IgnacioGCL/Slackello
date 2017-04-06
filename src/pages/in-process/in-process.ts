@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {AngularFire,FirebaseListObservable} from 'angularfire2';
+import {TaskViewPage} from '../task-view/task-view';
+import { IonicApp} from 'ionic-angular';
 /*
   Generated class for the InProcess page.
 
@@ -16,9 +18,10 @@ export class InProcessPage {
   keyTeam:any;
   tasks:FirebaseListObservable<any>;
   inprocess_tasks=[];
-  constructor(public af:AngularFire,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public app:IonicApp,public af:AngularFire,public navCtrl: NavController, public navParams: NavParams) {
     this.team=navParams.get('nameTeam');
     this.keyTeam=navParams.get('keyTeam');
+
     this.tasks=af.database.list('/teams/'+this.keyTeam+'/tasks');
     this.tasks.forEach(items=>{
       items.forEach(data_task=>{
@@ -35,6 +38,10 @@ export class InProcessPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad InProcessPage');
   }
-
+  viewTask(task){
+    this.navCtrl.push(TaskViewPage,{
+      taskParams:task
+    });
+  }
 
 }

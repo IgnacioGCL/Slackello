@@ -1,0 +1,32 @@
+<!--
+  Generated template for the TaskView page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header hide-tabs>
+  <ion-navbar color="dark" outline>
+
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>{{task.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Descripción</ion-label>
+      <ion-label >{{task.description}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Responsable</ion-label>
+      <ion-label >{{task.responsable}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-item-divider>Comentarios</ion-item-divider>
+  <ion-textarea placeholder="Escribe un comentario"></ion-textarea>
+
+
+</ion-content>
