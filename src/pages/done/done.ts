@@ -15,15 +15,34 @@ import {TaskViewPage} from '../task-view/task-view';
 export class DonePage {
   keyTeam:String;
   tasks:FirebaseListObservable<any>;
+  tasksLength:number;
   constructor(public af:AngularFire,public navCtrl: NavController, public navParams: NavParams) {
     this.keyTeam=navParams.get('keyTeam');
+    this.tasksLength=0;
     this.tasks=af.database.list('/teams/'+this.keyTeam+'/tasks');
+    this.tasks.subscribe(tasks=>{
+      tasks.forEach(task=>{
+        if(task.state=="Hecho"){
+          this.tasksLength++;
+        }
+      })
+    })
   }
 
   viewTask(task){
     this.navCtrl.push(TaskViewPage,{
       taskParams:task,
       keyTeam: this.keyTeam
+    });
+  }
+  ionViewWillEnter(){
+    this.tasksLength=0;
+    this.tasks.subscribe(tasks=> {
+      tasks.forEach(task => {
+        if (task.state == "Hecho") {
+          this.tasksLength++;
+        }
+      })
     });
   }
 }

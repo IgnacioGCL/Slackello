@@ -11,8 +11,8 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content padding>
-  <ion-label> Comentarios</ion-label>
+<ion-content padding class="home">
+  <ion-label> <strong>Comentarios</strong></ion-label>
   <span *ngIf="count < 1">{{mensaje}}</span>
   <ion-list *ngFor="let comment of comments |async">
     <ion-item>

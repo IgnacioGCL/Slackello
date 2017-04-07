@@ -14,6 +14,10 @@
 </ion-header>
 
 <ion-content class="home" padding>
+  <div class="no-tasks-wrapper">
+    <h1 class="no-tasks" *ngIf="tasksLength<1">No hay tareas pendientes</h1>
+  </div>
+
   <ion-list *ngFor="let task of tasks | async">
       <ion-card *ngIf="task.state == 'Pendiente'" (click)="viewTask(task);">
         <ion-card-content id="card">

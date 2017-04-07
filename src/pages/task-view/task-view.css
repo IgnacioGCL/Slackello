@@ -1,0 +1,14 @@
+page-task-view .color {
+  background-color: #B2122A; }
+page-task-view .form-button {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #B2122A;
+  background-color: white;
+  border: none; }
+page-task-view .form-button.button-md:hover:not(.disable-hover) {
+  background-color: white !important; }
+page-task-view #button1 {
+  background-color: white !important; }
+
+/*# sourceMappingURL=task-view.css.map */

@@ -26,9 +26,12 @@
   </ion-list>
   <ion-buttons style="text-align: center;">
 
-    <button *ngIf="task.state !== 'Pendiente'" ion-button color="dark" outline (click)="makePending()">Pasar a pendiente</button>
-    <button *ngIf="task.state !== 'En Proceso'" ion-button color="dark" outline (click)="makeInProgress()">Pasar a en proceso</button>
-    <button *ngIf="task.state !== 'Hecho'" ion-button color="dark" outline (click)="makeDone()">Pasar a finalizadas</button>
+    <button  id="button1" class="form-button" *ngIf="task.state !== 'Pendiente'" ion-button  (click)="makePending()">Pasar a pendiente</button>
+    <button id="button2" class="form-button"  *ngIf="task.state !== 'En Proceso'" ion-button (click)="makeInProgress()">Pasar a en proceso</button>
+    <button id="button3" class="form-button" *ngIf="task.state !== 'Hecho'" ion-button (click)="makeDone()">Pasar a finalizadas</button>
+  </ion-buttons>
+  <ion-buttons style="text-align: center;">
+    <button ion-button (click)="deleteTask()" color="danger">Eliminar</button>
   </ion-buttons>
   <ion-buttons style="text-align: center;">
     <button   ion-button color="dark" (click)="goToComments();">Comentarios</button>

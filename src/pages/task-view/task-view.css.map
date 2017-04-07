@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGE,qBAAM;EACJ,gBAAgB,EAHZ,OAAO;AAKb,2BAAY;EACV,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;EACnB,KAAK,EARD,OAAO;EASX,gBAAgB,EAAE,KAAK;EACvB,MAAM,EAAC,IAAI;AAGb,+DAAgD;EAC9C,gBAAgB,EAAE,gBAAgB;AAEpC,uBAAQ;EACN,gBAAgB,EAAE,gBAAgB",
+"sources": ["task-view.scss"],
+"names": [],
+"file": "task-view.css"
+}

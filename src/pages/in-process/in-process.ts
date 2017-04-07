@@ -17,17 +17,35 @@ export class InProcessPage {
   team:any;
   keyTeam:any;
   tasks:FirebaseListObservable<any>;
+  tasksLength:number;
   constructor(public app:IonicApp,public af:AngularFire,public navCtrl: NavController, public navParams: NavParams) {
     this.team=navParams.get('nameTeam');
+    this.tasksLength=0;
     this.keyTeam=navParams.get('keyTeam');
     this.tasks=af.database.list('/teams/'+this.keyTeam+'/tasks');
-
+    this.tasks.subscribe(tasks=>{
+      tasks.forEach(task=>{
+        if(task.state=="En Proceso"){
+          this.tasksLength++;
+        }
+      })
+    })
   }
 
   viewTask(task){
     this.navCtrl.push(TaskViewPage,{
       taskParams:task,
       keyTeam: this.keyTeam
+    });
+  }
+  ionViewWillEnter(){
+    this.tasksLength=0;
+    this.tasks.subscribe(tasks=> {
+      tasks.forEach(task => {
+        if (task.state == "En Proceso") {
+          this.tasksLength++;
+        }
+      })
     });
   }
 

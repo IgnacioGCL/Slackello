@@ -4,5 +4,20 @@ page-task-view {
   .color{
     background-color: $red;
   }
+  .form-button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color:$red;
+    background-color: white;
+    border:none;
+
+  }
+  .form-button.button-md:hover:not(.disable-hover){
+    background-color: white !important;
+  }
+  #button1{
+    background-color: white !important;
+  }
+
 
 }

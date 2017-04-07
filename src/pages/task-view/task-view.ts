@@ -56,5 +56,13 @@ export class TaskViewPage {
       console.log(error);
     });
   }
+  deleteTask(){
+    this.firebase.database.object('/teams/'+this.keyTeam+'/tasks/'+this.task.$key).remove().then(success => {
+      this.navCtrl.pop();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
 }
 

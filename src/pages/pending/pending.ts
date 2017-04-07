@@ -16,15 +16,35 @@ export class PendingPage {
   nameTeam:String;
   tasks:FirebaseListObservable<any>;
   keyTeam:any;
+  tasksLength:number;
   constructor(public navCtrl: NavController,public af:AngularFire, public navParams: NavParams) {
     this.keyTeam=navParams.get('keyTeam');
+    this.tasksLength=0;
     this.tasks=af.database.list('/teams/'+this.keyTeam+'/tasks');
+    this.tasks.subscribe(tasks=>{
+      tasks.forEach(task=>{
+        if(task.state=="Pendiente"){
+          this.tasksLength++;
+        }
+      })
+
+    })
   }
 
   viewTask(task){
     this.navCtrl.push(TaskViewPage,{
       taskParams:task,
       keyTeam:this.keyTeam
+    });
+  }
+  ionViewWillEnter(){
+    this.tasksLength=0;
+    this.tasks.subscribe(tasks=> {
+      tasks.forEach(task => {
+        if (task.state == "Pendiente") {
+          this.tasksLength++;
+        }
+      })
     });
   }
 }

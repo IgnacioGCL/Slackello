@@ -16,6 +16,10 @@
 
 
 <ion-content class="home" padding>
+  <div class="no-tasks-wrapper">
+    <h1 class="no-tasks" *ngIf="tasksLength<1">No hay tareas en proceso</h1>
+  </div>
+
   <ion-list *ngFor="let task of tasks | async ">
     <ion-card *ngIf="task.state == 'En Proceso'" (click)="viewTask(task);">
       <ion-card-content id="card">
