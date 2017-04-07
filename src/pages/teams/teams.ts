@@ -26,6 +26,7 @@ export class TeamsPage {
     let popup = this.alertCtrl.create({
       title: 'Crear equipo',
       message: 'Introduzca el correo de los ',
+      cssClass: 'alertScroll',
       inputs: [
         {
           name: 'nombreProyecto',

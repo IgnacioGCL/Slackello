@@ -2,24 +2,24 @@ page-teams {
 
   $red: #B2122A;
 
-  .color{
+  .color {
     background-color: $red;
   }
 
-  .aligned{
+  .aligned {
     text-align: center;
   }
 
-  .button{
+  .button {
     height: 40px;
     width: 40px;
   }
 
-  .icon-size{
+  .icon-size {
     font-size: 2em;
   }
 
-  .button-float{
+  .button-float {
     background: white !important;
     color: $red !important;
     z-index: 12 !important;
@@ -37,23 +37,29 @@ page-teams {
 
   }
 
-  .button-float:hover{
-    -webkit-transform: translate3d(0, -1px, 0)  !important;
+  .button-float:hover {
+    -webkit-transform: translate3d(0, -1px, 0) !important;
     transform: translate3d(0, -1px, 0) !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4) !important;
     background: darken(white, 10%) !important;
   }
 
-  .no-teams-wrapper{
+  .no-teams-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
   }
-  .no-teams{
+  .no-teams {
     color: white;
     text-align: center;
     position: relative;
     top: 250px;
+  }
+
+  .alertScroll {
+    .alert-wrapper {
+      overflow-y: scroll !important;
+    }
   }
 
 }
