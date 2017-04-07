@@ -17,7 +17,7 @@
 
 <ion-content class="home" padding>
   <div class="no-tasks-wrapper">
-    <h1 class="no-tasks" *ngIf="tasksLength<1">No hay tareas en proceso</h1>
+    <h5 class="no-tasks" *ngIf="tasksLength<1">No hay tareas en progreso</h5>
   </div>
 
   <ion-list *ngFor="let task of tasks | async ">

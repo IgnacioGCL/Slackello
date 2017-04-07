@@ -33,7 +33,6 @@ export class TeamsPage {
     let popup = this.alertCtrl.create({
       title: 'Crear equipo',
       message: 'Introduzca el correo de los ',
-      cssClass: 'alertScroll',
       inputs: [
         {
           name: 'nombreProyecto',
@@ -68,6 +67,7 @@ export class TeamsPage {
         }
       ]
     });
+    popup.setCssClass('alertScroll');
     popup.present();
   }
 
