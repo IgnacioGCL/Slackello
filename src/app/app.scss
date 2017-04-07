@@ -18,3 +18,12 @@ ion-alert {
     overflow-y: scroll !important;
   }
 }
+
+@font-face {
+  font-family: "Billabong";
+  src: url("../assets/fonts/Billabong.ttf") format("truetype");
+}
+
+$font-family-md-base: "Billabong";
+$font-family-ios-base: "Billabong";
+$font-family-wp-base: "Billabong";
