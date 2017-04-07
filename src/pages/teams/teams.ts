@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {TabsPage} from '../tabs/tabs';
 import _ from 'lodash';
+import { FirebaseApp } from 'angularfire2';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'page-teams',
@@ -15,11 +17,14 @@ export class TeamsPage {
   myUid: String = localStorage.getItem("user_uid");
   teams: FirebaseListObservable<any>;
   teamsLength: number;
-  constructor(private firebase: AngularFire, public alertCtrl: AlertController, public toast: ToastController, public navCtrl: NavController) {
+  image:string;
+  constructor(private firebase: AngularFire, public alertCtrl: AlertController, public toast: ToastController, public navCtrl: NavController, @Inject(FirebaseApp) firebaseApp: firebase.app.App) {
     this.teams = this.firebase.database.list('/users/'+this.myUid+'/teams/');
     this.teams.subscribe(teams => {
       this.teamsLength = teams.length;
     });
+    const storageRef = firebaseApp.storage().ref().child('marty-avatar.png');
+    storageRef.getDownloadURL().then(url => this.image = url);
   }
 
   createTeam() {

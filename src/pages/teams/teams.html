@@ -17,7 +17,7 @@
     <ion-card *ngFor="let team of teams | async">
       <ion-item (click)="goTeam(team.$value,team.$key)">
         <ion-avatar item-left>
-          <img src="http://ionicframework.com/dist/preview-app/www/assets/img/marty-avatar.png">
+          <img [src]="image">
         </ion-avatar>
         <h2>{{ team.$value }}</h2>
       </ion-item>
