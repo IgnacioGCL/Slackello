@@ -15,9 +15,9 @@
 <ion-content padding class="color">
   <ion-list>
     <ion-card *ngFor="let team of teams | async">
-      <ion-item (click)="goTeam(team.$value,team.$key)">
+      <ion-item (click)="goTeam(team.$value,team.$key)" >
         <ion-avatar item-left>
-          <img [src]="image">
+          <img [src]="image.slack">
         </ion-avatar>
         <h2>{{ team.$value }}</h2>
       </ion-item>

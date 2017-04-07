@@ -4,7 +4,7 @@ import {AlertController} from 'ionic-angular';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {TabsPage} from '../tabs/tabs';
 import _ from 'lodash';
-import { FirebaseApp } from 'angularfire2';
+import {FirebaseApp} from 'angularfire2';
 import * as firebase from 'firebase';
 
 @Component({
@@ -17,14 +17,16 @@ export class TeamsPage {
   myUid: String = localStorage.getItem("user_uid");
   teams: FirebaseListObservable<any>;
   teamsLength: number;
-  image:string;
+  image: any = {marty: "", trello: "", slack: ""};
+
   constructor(private firebase: AngularFire, public alertCtrl: AlertController, public toast: ToastController, public navCtrl: NavController, @Inject(FirebaseApp) firebaseApp: firebase.app.App) {
-    this.teams = this.firebase.database.list('/users/'+this.myUid+'/teams/');
+    this.teams = this.firebase.database.list('/users/' + this.myUid + '/teams/');
     this.teams.subscribe(teams => {
       this.teamsLength = teams.length;
     });
-    const storageRef = firebaseApp.storage().ref().child('marty-avatar.png');
-    storageRef.getDownloadURL().then(url => this.image = url);
+    firebaseApp.storage().ref().child('marty-avatar.png').getDownloadURL().then(url => this.image.marty = url);
+    firebaseApp.storage().ref().child('trello.png').getDownloadURL().then(url => this.image.trello = url);
+    firebaseApp.storage().ref().child('slack.png').getDownloadURL().then(url => this.image.slack = url);
   }
 
   createTeam() {
@@ -117,10 +119,11 @@ export class TeamsPage {
     });
     this.writeToast("Equipo creado");
   }
-  goTeam(teamName,teamKey){
-    this.navCtrl.push(TabsPage,{
-      nameTeam:teamName,
-      keyTeam:teamKey
+
+  goTeam(teamName, teamKey) {
+    this.navCtrl.push(TabsPage, {
+      nameTeam: teamName,
+      keyTeam: teamKey
     });
   }
 
