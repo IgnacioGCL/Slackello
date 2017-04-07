@@ -14,15 +14,13 @@
 </ion-header>
 
 <ion-content class="home" padding>
-  <ion-list>
-
-      <ion-card *ngFor="let pending_task of pending_tasks " (click)="viewTask(pending_task);">
-        <ion-card-content id="card" >
+  <ion-list *ngFor="let task of tasks | async">
+      <ion-card *ngIf="task.state == 'Pendiente'" (click)="viewTask(task);">
+        <ion-card-content id="card">
           <ion-grid>
             <ion-row>
-              <ion-col col-8=""><h3>{{pending_task.name}}</h3></ion-col>
-              <ion-col col-4><div><ion-icon name="person"><span>{{pending_task.responsable}}</span></ion-icon></div></ion-col>
-
+              <ion-col col-8=""><h3>{{task.name}}</h3></ion-col>
+              <ion-col col-4><div><ion-icon name="person"><span>{{task.responsable}}</span></ion-icon></div></ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>

@@ -14,31 +14,11 @@ import {TaskViewPage} from '../task-view/task-view';
 })
 export class PendingPage {
   nameTeam:String;
-  pending_tasks=[];
   tasks:FirebaseListObservable<any>;
   keyTeam:any;
-  params:any;
   constructor(public navCtrl: NavController,public af:AngularFire, public navParams: NavParams) {
     this.keyTeam=navParams.get('keyTeam');
-    console.log("Key de team en pending" + this.keyTeam);
     this.tasks=af.database.list('/teams/'+this.keyTeam+'/tasks');
-    this.tasks.forEach(items=>{
-      items.forEach(data_task=>{
-        console.log(data_task.state);
-
-        if(data_task.state=="Pendiente"){
-          console.log("Si");
-          this.pending_tasks.push(data_task);
-        }
-        console.log("Tareas pendientes "+ this.pending_tasks);
-      })
-    })
-    //this.tasks=af.database.list('/teams/'+team_id);
-  }
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PendingPage');
   }
 
   viewTask(task){

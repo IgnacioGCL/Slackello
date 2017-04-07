@@ -17,15 +17,13 @@
 
 
 <ion-content class="home" padding>
-  <ion-list>
-
-    <ion-card *ngFor="let done_task of done_tasks " (click)="viewTask(done_task);">
-      <ion-card-content id="card" >
+  <ion-list *ngFor="let task of tasks | async">
+    <ion-card *ngIf="task.state == 'Hecho'" (click)="viewTask(task);">
+      <ion-card-content id="card">
         <ion-grid>
           <ion-row>
-            <ion-col col-8=""><h3>{{done_task.name}}</h3></ion-col>
-            <ion-col col-4><div><ion-icon name="person"><span>{{done_task.responsable}}</span></ion-icon></div></ion-col>
-
+            <ion-col col-8=""><h3>{{task.name}}</h3></ion-col>
+            <ion-col col-4><div><ion-icon name="person"><span>{{task.responsable}}</span></ion-icon></div></ion-col>
           </ion-row>
         </ion-grid>
       </ion-card-content>

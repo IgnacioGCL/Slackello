@@ -54,8 +54,6 @@ export class AddTaskPage {
   addTask(){
     this.af.database.list('/teams/'+this.keyTeam+'/tasks').push(this.task);
     console.log(this.task);
-    this.navCtrl.push(TabsPage,{
-      nameTeam:this.nameTeam
-    });
+    this.navCtrl.pop();
   }
 }

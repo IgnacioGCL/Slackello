@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {CommentsPage} from '../comments/comments';
+import {AngularFire} from "angularfire2";
 
 /*
   Generated class for the TaskView page.
@@ -13,30 +14,46 @@ import {CommentsPage} from '../comments/comments';
   templateUrl: 'task-view.html'
 })
 export class TaskViewPage {
-  keyTask:any;
-  ketTeam:any;
+  keyTeam:any;
   task:any;
   tabBarElement:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private firebase: AngularFire) {
     this.task=navParams.get('taskParams');
-    this.ketTeam=navParams.get('keyTeam');
+    console.log(this.task);
+    this.keyTeam=navParams.get('keyTeam');
     this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskViewPage');
-  }
-  ionViewWillEnter() {
-    this.tabBarElement.style.display = 'none';
-  }
-
-  ionViewWillLeave() {
-    this.tabBarElement.style.display = 'flex';
-  }
-  goToComments(task){
+  goToComments(){
     this.navCtrl.push(CommentsPage,{
       taskParams:this.task,
-      keyTeam:this.ketTeam
+      keyTeam:this.keyTeam
+    });
+  }
+
+  makePending(){
+    console.log(this.keyTeam);
+    console.log(this.task.$key);
+    this.firebase.database.object('/teams/'+this.keyTeam+'/tasks/'+this.task.$key).update({state: "Pendiente"}).then(success => {
+      this.navCtrl.pop();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  makeInProgress(){
+    this.firebase.database.object('/teams/'+this.keyTeam+'/tasks/'+this.task.$key).update({state: "En Proceso"}).then(success => {
+      this.navCtrl.pop();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  makeDone(){
+    this.firebase.database.object('/teams/'+this.keyTeam+'/tasks/'+this.task.$key).update({state: "Hecho"}).then(success => {
+      this.navCtrl.pop();
+    }).catch(error => {
+      console.log(error);
     });
   }
 }
